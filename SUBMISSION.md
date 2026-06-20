@@ -1,15 +1,29 @@
-# Week 2 Submission
+# Week 3 Submission – Research Desk
 
-For this project, I built a research agent that can search the web, read web pages, and discover academic research papers. The goal was to combine different tools into a single agent that can collect information and provide useful answers to user questions.
+## Overview
 
-The project uses OpenRouter as the language model provider. For web search, I used the Serper API. To read webpage content, I used Trafilatura, which extracts clean text from websites. I also integrated AlphaXiv MCP to search for research papers and explore academic content.
+In this project, I built **Research Desk**, a research agent with persistent memory, web search, academic paper search, and file management capabilities.
 
-The agent follows a simple loop. First, it receives a user query. Then it searches the web or research sources when needed, collects information, and sends the relevant content to the language model. Finally, the model generates a response based on the gathered information.
+## Features Implemented
 
-One important design decision was limiting the amount of webpage text sent to the model. Many webpages contain a large amount of content, which can increase token usage and slow down responses. By sending only the most relevant portion of the text, the agent remains faster and more efficient.
+* Persistent session save/load using JSON files
+* Resume conversations with `--session`
+* AGENTS.md support for procedural memory
+* Web search and webpage reading tools
+* Academic paper search using Hugging Face Papers API
+* File tools (`read_file`, `write_file`, `edit_file`, `list_files`)
+* Agent class architecture with `Agent`, `REPLAgent`, and `TUIAgent`
+* One-shot CLI mode and interactive REPL mode
+* Textual-based TUI interface
 
-The most challenging part of this project was integrating AlphaXiv MCP. Initially, I received authentication and OAuth-related errors. After studying the documentation and completing the OAuth login flow, I was able to connect successfully and use the `discover_papers` tool to retrieve research papers.
+## What I Learned
 
-During development, I learned how tool calling works, how an agent loop is implemented, how MCP servers can provide external tools, and how to build a responsive terminal interface using Textual.
+* Agent memory and session persistence
+* Tool-based agent architecture
+* API integration with OpenRouter and Hugging Face
+* File handling and modular project design
+* Separation of agent logic from user interfaces
 
-If I had more time, I would improve the agent so that it automatically decides which tool to use for different types of questions. I would also add better error handling, support for more research sources, and a more advanced TUI that shows tool activity in real time.
+## Conclusion
+
+This project upgraded the Week 2 research assistant into a reusable research agent capable of searching the web, reading academic papers, saving conversations, and continuing previous research sessions.
